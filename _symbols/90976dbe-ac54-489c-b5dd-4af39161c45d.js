@@ -1,4 +1,4 @@
-// New Block - Updated January 2, 2024
+// Header - Updated January 2, 2024
 function noop() { }
 const identity = x => x;
 function assign(tar, src) {
@@ -3106,10 +3106,10 @@ function get_each_context_3(ctx, list, i) {
 	return child_ctx;
 }
 
-// (127:8) {:else}
+// (128:8) {:else}
 function create_else_block_1(ctx) {
 	let span;
-	let t_value = /*logo*/ ctx[0].title + "";
+	let t_value = /*logo*/ ctx[1].title + "";
 	let t;
 
 	return {
@@ -3128,7 +3128,7 @@ function create_else_block_1(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*logo*/ 1 && t_value !== (t_value = /*logo*/ ctx[0].title + "")) set_data(t, t_value);
+			if (dirty & /*logo*/ 2 && t_value !== (t_value = /*logo*/ ctx[1].title + "")) set_data(t, t_value);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -3136,7 +3136,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (125:8) {#if logo.image.url}
+// (126:8) {#if logo.image.url}
 function create_if_block_2(ctx) {
 	let img;
 	let img_src_value;
@@ -3152,18 +3152,18 @@ function create_if_block_2(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[0].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*logo*/ ctx[0].image.alt);
+			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[1].image.url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*logo*/ ctx[1].image.alt);
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*logo*/ 1 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[0].image.url)) {
+			if (dirty & /*logo*/ 2 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[1].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*logo*/ 1 && img_alt_value !== (img_alt_value = /*logo*/ ctx[0].image.alt)) {
+			if (dirty & /*logo*/ 2 && img_alt_value !== (img_alt_value = /*logo*/ ctx[1].image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -3173,7 +3173,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (132:8) {#each site_nav as { link }}
+// (133:8) {#each site_nav as { link }}
 function create_each_block_3(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3202,9 +3202,9 @@ function create_each_block_3(ctx) {
 			append_hydration(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 2 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
+			if (dirty & /*site_nav*/ 4 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
 
-			if (dirty & /*site_nav*/ 2 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
+			if (dirty & /*site_nav*/ 4 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -3214,7 +3214,7 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (135:8) {#each cta as { link }
+// (136:8) {#each cta as { link }
 function create_each_block_2(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3243,9 +3243,9 @@ function create_each_block_2(ctx) {
 			append_hydration(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*cta*/ 4 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
+			if (dirty & /*cta*/ 1 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
 
-			if (dirty & /*cta*/ 4 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
+			if (dirty & /*cta*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -3255,7 +3255,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (146:4) {#if mobileNavOpen}
+// (147:4) {#if mobileNavOpen}
 function create_if_block(ctx) {
 	let nav;
 	let t0;
@@ -3271,20 +3271,20 @@ function create_if_block(ctx) {
 	let dispose;
 
 	function select_block_type_1(ctx, dirty) {
-		if (/*logo*/ ctx[0].image.url) return create_if_block_1;
+		if (/*logo*/ ctx[1].image.url) return create_if_block_1;
 		return create_else_block;
 	}
 
 	let current_block_type = select_block_type_1(ctx);
 	let if_block = current_block_type(ctx);
-	let each_value_1 = /*site_nav*/ ctx[1];
+	let each_value_1 = /*site_nav*/ ctx[2];
 	let each_blocks_1 = [];
 
 	for (let i = 0; i < each_value_1.length; i += 1) {
 		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
 	}
 
-	let each_value = /*cta*/ ctx[2];
+	let each_value = /*cta*/ ctx[0];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -3400,8 +3400,8 @@ function create_if_block(ctx) {
 				}
 			}
 
-			if (dirty & /*site_nav*/ 2) {
-				each_value_1 = /*site_nav*/ ctx[1];
+			if (dirty & /*site_nav*/ 4) {
+				each_value_1 = /*site_nav*/ ctx[2];
 				let i;
 
 				for (i = 0; i < each_value_1.length; i += 1) {
@@ -3423,8 +3423,8 @@ function create_if_block(ctx) {
 				each_blocks_1.length = each_value_1.length;
 			}
 
-			if (dirty & /*cta*/ 4) {
-				each_value = /*cta*/ ctx[2];
+			if (dirty & /*cta*/ 1) {
+				each_value = /*cta*/ ctx[0];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -3477,10 +3477,10 @@ function create_if_block(ctx) {
 	};
 }
 
-// (150:8) {:else}
+// (151:8) {:else}
 function create_else_block(ctx) {
 	let span;
-	let t_value = /*logo*/ ctx[0].title + "";
+	let t_value = /*logo*/ ctx[1].title + "";
 	let t;
 
 	return {
@@ -3499,7 +3499,7 @@ function create_else_block(ctx) {
 			append_hydration(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*logo*/ 1 && t_value !== (t_value = /*logo*/ ctx[0].title + "")) set_data(t, t_value);
+			if (dirty & /*logo*/ 2 && t_value !== (t_value = /*logo*/ ctx[1].title + "")) set_data(t, t_value);
 		},
 		d(detaching) {
 			if (detaching) detach(span);
@@ -3507,7 +3507,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (148:8) {#if logo.image.url}
+// (149:8) {#if logo.image.url}
 function create_if_block_1(ctx) {
 	let img;
 	let img_src_value;
@@ -3523,18 +3523,18 @@ function create_if_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[0].image.url)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*logo*/ ctx[0].image.alt);
+			if (!src_url_equal(img.src, img_src_value = /*logo*/ ctx[1].image.url)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*logo*/ ctx[1].image.alt);
 		},
 		m(target, anchor) {
 			insert_hydration(target, img, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*logo*/ 1 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[0].image.url)) {
+			if (dirty & /*logo*/ 2 && !src_url_equal(img.src, img_src_value = /*logo*/ ctx[1].image.url)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (dirty & /*logo*/ 1 && img_alt_value !== (img_alt_value = /*logo*/ ctx[0].image.alt)) {
+			if (dirty & /*logo*/ 2 && img_alt_value !== (img_alt_value = /*logo*/ ctx[1].image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 		},
@@ -3544,7 +3544,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (153:8) {#each site_nav as { link }}
+// (154:8) {#each site_nav as { link }}
 function create_each_block_1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3573,9 +3573,9 @@ function create_each_block_1(ctx) {
 			append_hydration(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*site_nav*/ 2 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
+			if (dirty & /*site_nav*/ 4 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
 
-			if (dirty & /*site_nav*/ 2 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
+			if (dirty & /*site_nav*/ 4 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -3585,7 +3585,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (157:8) {#each cta as { link }
+// (158:8) {#each cta as { link }
 function create_each_block(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[8].label + "";
@@ -3614,9 +3614,9 @@ function create_each_block(ctx) {
 			append_hydration(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*cta*/ 4 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
+			if (dirty & /*cta*/ 1 && t_value !== (t_value = /*link*/ ctx[8].label + "")) set_data(t, t_value);
 
-			if (dirty & /*cta*/ 4 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
+			if (dirty & /*cta*/ 1 && a_href_value !== (a_href_value = /*link*/ ctx[8].url)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -3631,7 +3631,7 @@ function create_fragment(ctx) {
 	let div1;
 	let div0;
 	let a;
-	let style___size = `${/*logo*/ ctx[0].size}rem`;
+	let style___size = `${/*logo*/ ctx[1].size}rem`;
 	let t0;
 	let nav;
 	let t1;
@@ -3644,20 +3644,20 @@ function create_fragment(ctx) {
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*logo*/ ctx[0].image.url) return create_if_block_2;
+		if (/*logo*/ ctx[1].image.url) return create_if_block_2;
 		return create_else_block_1;
 	}
 
 	let current_block_type = select_block_type(ctx);
 	let if_block0 = current_block_type(ctx);
-	let each_value_3 = /*site_nav*/ ctx[1];
+	let each_value_3 = /*site_nav*/ ctx[2];
 	let each_blocks_1 = [];
 
 	for (let i = 0; i < each_value_3.length; i += 1) {
 		each_blocks_1[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
 	}
 
-	let each_value_2 = /*cta*/ ctx[2];
+	let each_value_2 = /*cta*/ ctx[0];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value_2.length; i += 1) {
@@ -3798,12 +3798,12 @@ function create_fragment(ctx) {
 				}
 			}
 
-			if (dirty & /*logo*/ 1 && style___size !== (style___size = `${/*logo*/ ctx[0].size}rem`)) {
+			if (dirty & /*logo*/ 2 && style___size !== (style___size = `${/*logo*/ ctx[1].size}rem`)) {
 				set_style(a, "--size", style___size);
 			}
 
-			if (dirty & /*site_nav*/ 2) {
-				each_value_3 = /*site_nav*/ ctx[1];
+			if (dirty & /*site_nav*/ 4) {
+				each_value_3 = /*site_nav*/ ctx[2];
 				let i;
 
 				for (i = 0; i < each_value_3.length; i += 1) {
@@ -3825,8 +3825,8 @@ function create_fragment(ctx) {
 				each_blocks_1.length = each_value_3.length;
 			}
 
-			if (dirty & /*cta*/ 4) {
-				each_value_2 = /*cta*/ ctx[2];
+			if (dirty & /*cta*/ 1) {
+				each_value_2 = /*cta*/ ctx[0];
 				let i;
 
 				for (i = 0; i < each_value_2.length; i += 1) {
@@ -3897,9 +3897,9 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { props } = $$props;
+	let { cta } = $$props;
 	let { logo } = $$props;
 	let { site_nav } = $$props;
-	let { cta } = $$props;
 	let mobileNavOpen = false;
 
 	const click_handler = () => $$invalidate(3, mobileNavOpen = true);
@@ -3907,18 +3907,18 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ('props' in $$props) $$invalidate(4, props = $$props.props);
-		if ('logo' in $$props) $$invalidate(0, logo = $$props.logo);
-		if ('site_nav' in $$props) $$invalidate(1, site_nav = $$props.site_nav);
-		if ('cta' in $$props) $$invalidate(2, cta = $$props.cta);
+		if ('cta' in $$props) $$invalidate(0, cta = $$props.cta);
+		if ('logo' in $$props) $$invalidate(1, logo = $$props.logo);
+		if ('site_nav' in $$props) $$invalidate(2, site_nav = $$props.site_nav);
 	};
 
-	return [logo, site_nav, cta, mobileNavOpen, props, click_handler, click_handler_1];
+	return [cta, logo, site_nav, mobileNavOpen, props, click_handler, click_handler_1];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, logo: 0, site_nav: 1, cta: 2 });
+		init(this, options, instance, create_fragment, safe_not_equal, { props: 4, cta: 0, logo: 1, site_nav: 2 });
 	}
 }
 
